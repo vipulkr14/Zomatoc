@@ -21,6 +21,10 @@ config={
     
 zomato = zomatoc.initialize_app(config)
 ```
+
+## main.py
+The last input for city_name is "No" to break the loop.
+
 ## Methods
 ### Common
 
