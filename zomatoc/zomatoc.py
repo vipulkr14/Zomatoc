@@ -64,8 +64,8 @@ class Zomato:
 
     def restaurant_search(self, cityid="", start="", count="20"):
         """
-        Takes either query, latitude and longitude or cuisine as input.
-        Returns a list of Restaurant IDs.
+        Takes cityid,start and count(default 20) as input.
+        Returns a list of 'count' numbers of (MAX 20) Restaurant's Details starting from 'start'.
         """
         
         headers = {'Accept': 'application/json', 'user-key': self.user_key}
