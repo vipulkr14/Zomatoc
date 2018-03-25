@@ -1,1 +1,1 @@
-from .zomatopy import initialize_app
+from .zomatoc import initialize_app
