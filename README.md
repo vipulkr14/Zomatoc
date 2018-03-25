@@ -1,4 +1,4 @@
-# Zomatopy
+# Zomatoc
 A Python wrapper for the Zomato API v2.1
 
 This is a fork of original Zomatopy wrapper. This takes input the city_names and creates a city_name.csv file with list of 100 restaurants with their name and the average_cost_for_two.
@@ -56,7 +56,8 @@ city_name = zomatoc.get_city_name(city_ID)
 
 restaurant_details = restaurant_search(cityid=cid,start=st)
 ```
-- The details can be appended by adding attribute and values in restaurant_details : ```python
+- The details can be appended by adding attribute and values in restaurant_details : 
+```python
 restaurant_details.append({"average_cost_for_two" : restaurant['restaurant']['average_cost_for_two'],"name" : restaurant['restaurant']['name'],"currency" : restaurant['restaurant']['currency']})
 ```
 ## Exceptions
