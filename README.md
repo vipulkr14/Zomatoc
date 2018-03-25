@@ -10,7 +10,7 @@ This is a fork of original Zomatopy wrapper. This takes input the city_names and
 This wrapper was written for Python 3 and might not work well with Python 2.
 
 ### Adding Zomatoc to your application
-Keep the zomatoc folder in the same solder as your mail program. Use/modify the code from mail.py as needed.
+Keep the zomatoc folder in the same solder as your main program. Use/modify the code from main.py as needed.
 
 ```python
 import zomatoc
