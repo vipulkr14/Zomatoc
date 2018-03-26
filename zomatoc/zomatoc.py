@@ -1,5 +1,6 @@
 import requests
 import ast
+import csv
 
 base_url = "https://developers.zomato.com/api/v2.1/"
 
@@ -19,7 +20,8 @@ class Zomato:
         Returns the ID for the city given as input.
         """
         if city_name.isalpha() == False:
-            raise ValueError('InvalidCityName')
+            #raise ValueError('InvalidCityName')
+            return 0
         city_name = city_name.split(' ')
         city_name = '%20'.join(city_name)
         headers = {'Accept': 'application/json', 'user-key': self.user_key}
@@ -30,7 +32,8 @@ class Zomato:
         self.is_rate_exceeded(a)
 
         if len(a['location_suggestions']) == 0:
-            raise Exception('invalid_city_name')
+            #raise Exception('invalid_city_name')
+            return 0
         elif 'city_name' in a['location_suggestions'][0]:
             city_name = city_name.replace('%20', ' ')
             if str(a['location_suggestions'][0]['city_name']).lower() == str(city_name).lower():
@@ -84,6 +87,33 @@ class Zomato:
                  
 
         return restaurant_details
+
+    def get_avg_cost(self,citylist):
+        """
+        Takes a list of city names as input and creates a csv file with the cityname and list
+        of 100 resturants with average_Cost_for_two
+        """
+        for ci in citylist:
+            cid=self.get_city_ID(ci);
+            if(cid==0):
+                print("\nCity not Found")
+            else:
+                st=0
+
+                filename=ci+".csv"
+
+                with open(filename, 'w', newline='') as csvfile:
+                        fieldnames = ['name', 'average_cost_for_two']
+                        writer = csv.DictWriter(csvfile,fieldnames=fieldnames)
+                        writer.writeheader()
+                        while(st<=81):
+                                restaurant_list = self.restaurant_search(cityid=cid,start=st)
+                                print(type(restaurant_list))
+                                print(restaurant_list)
+                                writer.writerows(restaurant_list)
+                                #print("Done")
+                                st=st+20
+                print("\nFile Created")
 
 
 
