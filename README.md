@@ -10,7 +10,7 @@ This is a fork of original Zomatopy wrapper. This takes input the city_names and
 This wrapper was written for Python 3 and might not work well with Python 2.
 
 ### Adding Zomatoc to your application
-Keep the zomatoc folder in the same solder as your main program. Use/modify the code from main.py as needed.
+Keep the zomatoc folder in the same solder as your main program
 
 ```python
 import zomatoc
@@ -21,9 +21,6 @@ config={
     
 zomato = zomatoc.initialize_app(config)
 ```
-
-## main.py
-The last input for city_name is "No" to break the loop.
 
 ## Methods
 ### Common
@@ -49,8 +46,14 @@ city_ID = zomatoc.get_city_ID(city_name)
 
 city_name = zomatoc.get_city_name(city_ID)
 ```
+#### Getting average_cost_for_two in a csv file
+- Takes list of city names as input.
+- Creates the csv file with 100 restaurant name and their average_cost_for_two
+```
+zomato.get_avg_cost(clist);
+```
 
-#### Searching restaurants based on query, latitude/longitude and/or cuisine IDs
+#### Searching restaurants based on city ID
 - Takes cityid,start and count(default 20) as input.
 - Returns a list of 'count' numbers of (MAX 20) Restaurant's Details starting from 'start'.
 
